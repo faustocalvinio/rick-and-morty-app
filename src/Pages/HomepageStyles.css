@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+#main-container{
+    height:100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.bg-image{
+    width: 100%; 
+    height: 100%;
+    z-index: 1;
+}
+.link-main{
+    background-color: #000;
+    color: #fff;
+}
+
+.container-buttons{
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}
+.no-display{
+    display: none;
+}
