@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CharacterList from "../components/CharacterList";
-import { Previous } from "../components/Previous";
-import { Next } from "../components/Next";
+import { Next,Previous,CharacterList } from "../components";
+import './MainGifsApp.css';
 
 
 export function MainGifsApp() {
   const [info, setInfo] = useState({});
-  const [currentPage, setCurrentPage] = useState(1)
+
+  const [currentPage, setCurrentPage] = useState(1);
+
   const url = "https://rickandmortyapi.com/api/character";
+  
   const [charactersListArr, setCharactersListArr] = useState([]);
 
   

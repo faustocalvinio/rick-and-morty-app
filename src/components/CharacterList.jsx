@@ -1,7 +1,6 @@
 import { CharItem } from "./CharItem";
 
-
-const CharacterList = ({ characters }) => {
+export const CharacterList = ({ characters }) => {
   return (
     <div className="cont-chars">
       
@@ -13,4 +12,3 @@ const CharacterList = ({ characters }) => {
   );
 };
 
-export default CharacterList;
