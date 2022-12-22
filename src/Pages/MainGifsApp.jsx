@@ -6,14 +6,23 @@ import './MainGifsApp.css';
 
 export function MainGifsApp() {
   const [info, setInfo] = useState({});
-
+  const [inputValue, setInputValue] = useState()
   const [currentPage, setCurrentPage] = useState(1);
 
-  const url = "https://rickandmortyapi.com/api/character";
+  const [url, setUrl] = useState('https://rickandmortyapi.com/api/character')
   
   const [charactersListArr, setCharactersListArr] = useState([]);
 
-  
+  const onInputSearch=(e)=>{
+    console.log(e.target.value)
+    setInputValue(e.target.value);
+    if (inputValue===''){
+      setUrl('https://rickandmortyapi.com/api/character')
+    }else{
+      
+    }
+    setUrl(`https://rickandmortyapi.com/api/character/?name=${inputValue} `)
+  }
 
   const fetchCharacters = (url) => {
       axios
@@ -37,15 +46,30 @@ export function MainGifsApp() {
     window.scrollTo(0, 0);
     setCurrentPage(currentPage-1)
   };
-
+  const setEmptyInput=()=>{
+    setInputValue('');
+    setCurrentPage(1);
+    setUrl('https://rickandmortyapi.com/api/character');
+    fetchCharacters(url);
+  }
   useEffect(() => {
     fetchCharacters(url);
-  }, []);
+  }, [url]);
 
   return (
     <>
 
       <div className="pagination-cont-main">
+      <input 
+              type="text" 
+              placeholder="search"
+              value={ inputValue }
+              onChange={ onInputSearch }              
+              style={{maxWidth:'200px'}}
+        />
+        <button
+          onClick={setEmptyInput}
+        >X</button>
         <nav>
           <ul className="ul-pagination">
             { info.prev && <Previous handlePreviousFunc={ handlePreviousPage } /> }
