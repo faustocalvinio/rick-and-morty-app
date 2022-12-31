@@ -58,18 +58,24 @@ export function MainGifsApp() {
 
   return (
     <>
-
-      <div className="pagination-cont-main">
-      <input 
+      <h1 className="app-title">rick and morty app</h1> 
+      <div className="search-container">
+        <input 
               type="text" 
               placeholder="search"
               value={ inputValue }
               onChange={ onInputSearch }              
-              style={{maxWidth:'200px'}}
+              className="search-input"
         />
         <button
+          className="reset-button"
           onClick={setEmptyInput}
         >X</button>
+      </div>
+      
+      <div className="pagination-cont-main">
+       
+        
         <nav>
           <ul className="ul-pagination">
             { info.prev && <Previous handlePreviousFunc={ handlePreviousPage } /> }
