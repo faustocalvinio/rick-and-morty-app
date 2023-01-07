@@ -14,8 +14,10 @@ export function MainGifsApp() {
   const [charactersListArr, setCharactersListArr] = useState([]);
 
   const onInputSearch=(e)=>{
-    console.log(e.target.value)
     setInputValue(e.target.value);
+    
+  }
+  const onClickSearch=()=>{
     if (inputValue===''){
       setUrl('https://rickandmortyapi.com/api/character')
     }else{
@@ -23,7 +25,6 @@ export function MainGifsApp() {
     }
     setUrl(`https://rickandmortyapi.com/api/character/?name=${inputValue} `)
   }
-
   const fetchCharacters = (url) => {
       axios
         .get(url)
@@ -59,18 +60,24 @@ export function MainGifsApp() {
   return (
     <>
       <h1 className="app-title">rick and morty app</h1> 
-      <div className="search-container">
+      <div className="d-flex  gap-3 my-3 justify-content-center">
         <input 
               type="text" 
-              placeholder="search"
+              placeholder="Search a character"
               value={ inputValue }
               onChange={ onInputSearch }              
-              className="search-input"
+              className="form-control "
         />
+        <button 
+          className="btn btn-success"
+          onClick={onClickSearch}
+        >
+          Search
+        </button>
         <button
-          className="reset-button"
+          className="btn btn-danger"
           onClick={setEmptyInput}
-        >X</button>
+        >Reset</button>
       </div>
       
       <div className="pagination-cont-main">
@@ -79,7 +86,7 @@ export function MainGifsApp() {
         <nav>
           <ul className="ul-pagination">
             { info.prev && <Previous handlePreviousFunc={ handlePreviousPage } /> }
-            <h3 className="px-4">Page: { currentPage }</h3>
+            <h3 className="px-4">Page { currentPage }</h3>
             { info.next && <Next handleNextFunc={ handleNextPage } /> }
           </ul>
         </nav>
@@ -91,6 +98,8 @@ export function MainGifsApp() {
         <nav>
           <ul className="ul-pagination">
             { info.prev && <Previous handlePreviousFunc={ handlePreviousPage } /> }
+            <h3 className="px-4">Page { currentPage }</h3>
+
             { info.next && <Next handleNextFunc={ handleNextPage } /> }     
             
           </ul>
